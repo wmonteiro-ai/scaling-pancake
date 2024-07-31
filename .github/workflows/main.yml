@@ -43,7 +43,7 @@ jobs:
 
       - name: Create deployment package
         run: |
-          tar -czf pancaketeste.tar.gz .
+          tar -czf pancaketeste.tar.gz main.py
 
       - name: Upload deployment package
         uses: actions/upload-artifact@v2
