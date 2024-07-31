@@ -36,7 +36,9 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Tar and Upload a Build Artifact
-        uses: eviden-actions/upload-artifact@v2.0.0
+      - name: Upload an Artifact
+        uses: actions/upload-artifact@v4
         with:
-          path: main.py
+          path: |
+            main.py
+            README.md
