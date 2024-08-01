@@ -21,4 +21,4 @@ jobs:
       - name: Linter
         uses: advanced-security/python-lint-code-scanning-action@v1
         with:
-          linter: flake8
+          linter: pylint
