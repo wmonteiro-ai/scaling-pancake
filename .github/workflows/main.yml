@@ -1,5 +1,4 @@
-name: Continuous Delivery
-
+name: main
 on:
   push:
     branches:
