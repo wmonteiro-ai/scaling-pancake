@@ -1,7 +1,8 @@
 name: Continuous Integration
 
 on:
-  pull_request
+  pull_request:
+    types: [edited]
 
 jobs:
   build:
