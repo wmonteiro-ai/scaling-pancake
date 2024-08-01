@@ -1,12 +1,38 @@
 name: main
-on: push
+on:
+  push:
+    branches:
+      - main  # Ou o branch que você deseja monitorar
 
-jobs: 
-  tareas:
+jobs:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      - name: Install pytest
-        run: pip install pytest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Upload an Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: |
+            main.py
+            README.md
