@@ -30,7 +30,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      # continuous delivery: creating the zip doesn't do much
+      # continuous delivery: creating the zip doesn't do much 
       - name: Upload an Artifact
         uses: actions/upload-artifact@v4
         with:
