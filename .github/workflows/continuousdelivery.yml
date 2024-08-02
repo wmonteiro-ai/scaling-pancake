@@ -43,5 +43,5 @@ jobs:
       - uses: Shopify/upload-to-release@master
         with:
           name: projetozipado
-          path: build/a.out
+          path: projetozipado.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
