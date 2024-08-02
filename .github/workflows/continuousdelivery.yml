@@ -40,8 +40,11 @@ jobs:
             README.md
 
       # continuous deployment
-      - uses: Shopify/upload-to-release@master
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: projetozipado
-          path: projetozipado.zip
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: projetozipado.zip
+          asset_name: projetozipado.zip
+          tag: ${{ github.ref }}
+          overwrite: true
