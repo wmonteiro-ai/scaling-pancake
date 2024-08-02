@@ -48,12 +48,16 @@ jobs:
       # continuous deployment 
       - uses: actions/download-artifact@v4
         with:
+          path: tmp
           name: projetozipado.zip
-      
+
+      - name: Display structure of downloaded files
+        run: ls -R tmp
+  
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: $GITHUB_WORKSPACE/projetozipado.zip
+          file: /tmp/projetozipado.zip
           tag: ${{ github.ref }}
           overwrite: true
