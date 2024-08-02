@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -22,10 +21,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
 
-  deploy:
+  deliver:
     needs: build
     runs-on: ubuntu-latest
-
+    outputs:
+      artifactpath: ${{ steps.upload-artifact.outputs.artifact-id }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -33,18 +33,24 @@ jobs:
       # continuous delivery: creating a zip
       - name: Upload an Artifact
         uses: actions/upload-artifact@v4
+        id: upload-artifact
         with:
           name: projetozipado.zip
           path: |
             '**.py'
             README.md
 
+  deploy:
+    needs: deliver
+    runs-on: ubuntu-latest
+
+    steps:
       # continuous deployment
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: projetozipado.zip
+          file: ${{ needs.deliver.outputs.artifactpath }}
           asset_name: projetozipado.zip
           tag: ${{ github.ref }}
           overwrite: true
