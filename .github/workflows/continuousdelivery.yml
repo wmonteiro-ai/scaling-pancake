@@ -40,7 +40,7 @@ jobs:
             README.md
 
       # continuous deployment
-      - uses: Shopify/upload-to-release@master
+      - uses: Shopify/upload-to-release@v1
         with:
           name: projetozipado
           path: build/a.out
