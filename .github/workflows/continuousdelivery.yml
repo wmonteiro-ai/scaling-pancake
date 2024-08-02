@@ -48,11 +48,11 @@ jobs:
       # continuous deployment 
       - uses: actions/download-artifact@v4
         with:
-          path: tmp
+          path: /tmp
           name: projetozipado.zip
 
       - name: Display structure of downloaded files
-        run: ls -R tmp
+        run: ls -R /tmp
   
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
