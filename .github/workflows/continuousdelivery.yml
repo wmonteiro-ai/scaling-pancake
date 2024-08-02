@@ -30,10 +30,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      # continuous delivery: creating the zip doesn't do much 
+      # continuous delivery: creating a zip
       - name: Upload an Artifact
         uses: actions/upload-artifact@v4
         with:
+          name: projetozipado
           path: |
             '**.py'
             README.md
+
+      # continuous deployment
+      - name: Release
+        uses: Shopify/upload-to-release@v1
+        with:
+          name: projetozipado
+          path: build/a.out
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
