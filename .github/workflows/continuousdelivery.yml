@@ -54,6 +54,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${GITHUB_REPOSITORY}/projetozipado.zip
+          file: /home/runner/work/${GITHUB_REPOSITORY}/${GITHUB_REPOSITORY}/projetozipado.zip
           tag: ${{ github.ref }}
           overwrite: true
