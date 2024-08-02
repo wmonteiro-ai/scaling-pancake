@@ -48,7 +48,8 @@ jobs:
       # continuous deployment
       - uses: actions/download-artifact@v4
         with:
-          name: tmp/projetozipado.zip
+          name: projetozipado.zip
+          path: tmp/
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
