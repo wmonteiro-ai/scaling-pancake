@@ -41,7 +41,7 @@ jobs:
 
       # continuous deployment
       - name: Release
-        uses: Shopify/upload-to-release@v1
+        uses: Shopify/upload-to-release@v2
         with:
           name: projetozipado
           path: build/a.out
