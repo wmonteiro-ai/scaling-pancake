@@ -25,7 +25,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     outputs:
-      artifactpath: ${{ steps.upload-artifact.outputs.artifact-id }}
+      artifactpath: ${{ steps.upload-artifact.outputs.artifact-url }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
